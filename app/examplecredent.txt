@@ -1,0 +1,10 @@
+NEXT_PUBLIC_SUPABASE_URL=https://guzaehqokdhennhudqav.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd1emFlaHFva2RoZW5uaHVkcWF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk4MjMyODcsImV4cCI6MjA2NTM5OTI4N30.CizNxbRZvyL48Ousax8LfFHBbvun-jxCn6k0Oevujnw
+
+
+# Connect to Supabase via connection pooling
+DATABASE_URL="postgresql://postgres.guzaehqokdhennhudqav:voting724@aws-0-ap-south-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+
+# Direct connection to the database. Used for migrations
+DIRECT_URL="postgresql://postgres.guzaehqokdhennhudqav:voting724@aws-0-ap-south-1.pooler.supabase.com:5432/postgres"
+
