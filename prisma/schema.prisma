@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL") // Added for migrations and direct connections
+}
+
+model Student {
+  id          Int     @id @unique @default(autoincrement()) @map("admissionNumber") // Changed to Int, auto-incrementing, mapped to admissionNumber
+  name        String
+  hasVoted    Boolean @default(false) // Keep hasVoted for future re-enabling of validation
+
+  @@map("students") // Map table name to 'students'
+}
+
+model Candidate {
+  id        String @id @unique
+  name      String
+  category  String // e.g., "headBoy", "headGirl", "deputyBoy", "deputyGirl"
+}
+
+model Vote {
+  id          String    @id @default(uuid())
+  studentId   Int       // Changed to Int, removed @unique and @relation for testing
+  headBoy     String?
+  headGirl    String?
+  deputyBoy   String?
+  deputyGirl  String?
+  createdAt   DateTime  @default(now())
+
+  @@map("votes") // Map table name to 'votes'
+}
+
+model Log {
+  id          String    @id @default(uuid())
+  studentId   Int?      // Changed to Int? for consistency
+  type        String    // e.g., "duplicate", "malformed", "backend_error", "invalid_student"
+  message     String
+  createdAt   DateTime  @default(now())
+}
